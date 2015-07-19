@@ -11,6 +11,7 @@ from misoclib.mem.sdram.module import MT46H32M16
 from misoclib.mem.sdram.phy import s6ddrphy
 from misoclib.mem.sdram.core.lasmicon import LASMIconSettings
 from misoclib.soc.sdram import SDRAMSoC
+from misoclib.com.uart import UART
 
 from gateware import dna
 from gateware import firmware
@@ -19,6 +20,7 @@ from gateware import hdmi_out
 from gateware import i2c
 from gateware import i2c_hack
 from gateware import platform_info
+from gateware.debug.uart import jtag
 
 from targets.common import *
 
@@ -146,7 +148,12 @@ class BaseSoC(SDRAMSoC):
         SDRAMSoC.__init__(self, platform, clk_freq,
                           integrated_rom_size=0x8000,
                           sdram_controller_settings=LASMIconSettings(l2_size=32, with_bandwidth=True),
+                          with_uart=False,
                           **kwargs)
+
+        self.submodules.uart_phy = jtag.Phy(jtag.BscanSpartan6())
+        self.submodules.uart = UART(self.uart_phy, phy_cd="jtag")
+        platform.add_period_constraint(self.uart_phy.impl.clk, 12.)
 
         platform.add_extension(PipistrelloCustom)
         self.submodules.crg = _CRG(platform, clk_freq)
