@@ -106,17 +106,18 @@ interface.
 
 ##### Atlys
 
-[`atlys_hdmi2usb`](targets/atlys_hdmi2usb.py)
-
-* `VideomixerSoC` validated: MiniSoC + 2 x HDMI in + 2 x HDMI out
+* `VideoMixerSoC` validated: MiniSoC + 2 x HDMI in + 2 x HDMI out
+ * [`atlys_video`](targets/atlys_video.py)
 * `HDMI2USBSoC` validated: VideomixerSoC + JPEG encoder + USB streaming
+ * [`atlys_hdmi2usb`](targets/atlys_hdmi2usb.py)
 
 ##### Opsis
 
-[`opsis_hdmi2usb`](targets/opsis_hdmi2usb.py)
 
-* `VideomixerSoC` validated: MiniSoC + 2 x HDMI in + 2 x HDMI out
-* `HDMI2USBSoC` validated: VideomixerSoC + JPEG encoder + USB streaming
+* `VideoMixerSoC` validated: MiniSoC + 2 x HDMI in + 2 x HDMI out
+ * [`opsis_video`](targets/opsis_video.py)
+* `HDMI2USBSoC` validated: VideoMixerSoC + JPEG encoder + USB streaming
+ * [`opsis_hdmi2usb`](targets/opsis_hdmi2usb.py)
 
 ### HDMI2Eth
 
@@ -130,8 +131,8 @@ found on many boards.
 * `EtherboneSoC` validated: BaseSoC + 10/100Mbps HW Ethernet UDP/IP stack and
   Etherbone
 
-* `VideomixerSoC` validated: EtherboneSoC + HDMI in + HDMI out
-* `HDMI2ETHSoC` validated: VideomixerSoC + JPEG encoder + UDP streaming
+* `VideoMixerSoC` validated: EtherboneSoC + HDMI in + HDMI out
+* `HDMI2EthSoC` validated: VideomixerSoC + JPEG encoder + UDP streaming
 
 ### Base
 
@@ -159,7 +160,7 @@ target.
 [`pipistrello_base`](targets/pipistrello_base.py)
 
 * `BaseSoC`: CPU + LPDDR + UART
-* `VideomixerSoC`: BaseSoC + HDMI out
+* `VideoMixerSoC`: BaseSoC + HDMI out
 
 ##### miniSpartan6+
 
