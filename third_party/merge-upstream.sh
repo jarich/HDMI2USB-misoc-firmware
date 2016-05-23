@@ -33,9 +33,6 @@ fi
 for TARGET in $TARGETS; do
 	(
 		case $TARGET in
-		lite*|mi*)
-			BRANCH=legacy
-			;;
 		*)
 			BRANCH=master
 			;;
