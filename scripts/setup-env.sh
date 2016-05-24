@@ -125,26 +125,53 @@ echo ""
 echo "Checking git submodules"
 echo "-----------------------"
 
-# migen
-MIGEN_DIR=$THIRD_DIR/migen
-export PYTHONPATH=$MIGEN_DIR:$PYTHONPATH
-check_import migen || return 1
+# litex
 
-# misoc
-MISOC_DIR=$THIRD_DIR/misoc
-export PYTHONPATH=$MISOC_DIR:$PYTHONPATH
-$MISOC_DIR/tools/flterm --help 2> /dev/null || (echo "misoc flterm broken" && return 1)
-check_import misoclib || return 1
+
+
+
+
+check_import litex || return 1
+
+# litedram
+
+
+
+
+
+check_import litedram || return 1
 
 # liteeth
-LITEETH_DIR=$THIRD_DIR/liteeth
-export PYTHONPATH=$LITEETH_DIR:$PYTHONPATH
+
+
+
+
+
 check_import liteeth || return 1
 
 # liteusb
-LITEUSB_DIR=$THIRD_DIR/liteusb
-export PYTHONPATH=$LITEUSB_DIR:$PYTHONPATH
+
+
+
+
+
 check_import liteusb || return 1
+
+# litejpeg
+
+
+
+
+
+check_import litejpeg || return 1
+
+# litevideo
+
+
+
+
+
+check_import litevideo || return 1
 
 echo "-----------------------"
 echo ""

@@ -179,45 +179,53 @@ echo "-----------------------"
 		git submodule update --recursive --init
 )
 
-# migen
-MIGEN_DIR=$THIRD_DIR/migen
+# litex
+LITEX_DIR=$THIRD_DIR/litex
 (
-	cd $MIGEN_DIR
-	cd vpi
-	#make all
-	#sudo make install
+	cd $LITEX_DIR
+	python setup.py develop
 )
-export PYTHONPATH=$MIGEN_DIR:$PYTHONPATH
-check_import migen
+check_import litex
 
-# misoc
-MISOC_DIR=$THIRD_DIR/misoc
+# litedram
+LITEDRAM_DIR=$THIRD_DIR/litedram
 (
-	cd $MISOC_DIR
-	cd tools
-	make
+	cd $LITEDRAM_DIR
+	python setup.py develop
 )
-export PYTHONPATH=$MISOC_DIR:$PYTHONPATH
-$MISOC_DIR/tools/flterm --help 2> /dev/null
-check_import misoclib
+check_import litedram
 
 # liteeth
 LITEETH_DIR=$THIRD_DIR/liteeth
 (
 	cd $LITEETH_DIR
-	true
+	python setup.py develop
 )
-export PYTHONPATH=$LITEETH_DIR:$PYTHONPATH
 check_import liteeth
 
 # liteusb
 LITEUSB_DIR=$THIRD_DIR/liteusb
 (
 	cd $LITEUSB_DIR
-	true
+	python setup.py develop
 )
-export PYTHONPATH=$LITEUSB_DIR:$PYTHONPATH
 check_import liteusb
+
+# litejpeg
+LITEUSB_DIR=$THIRD_DIR/litejpeg
+(
+	cd $LITEUSB_DIR
+	python setup.py develop
+)
+check_import litejpeg
+
+# litevideo
+LITEUSB_DIR=$THIRD_DIR/litevideo
+(
+	cd $LITEUSB_DIR
+	python setup.py develop
+)
+check_import litevideo
 
 echo "-----------------------"
 echo ""
